@@ -79,28 +79,25 @@ app.post('/submitTest', function (request, response, next) {
     var userId = request.body.userId;
     var subjectId = request.body.subjectId;
     var attempt = 0;
-
-    var queryToFetchAttempt = "SELECT CASE  WHEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  USER_ATTEMPTS WHERE USER_ID = '" + request.body.userId + "' AND SUBJECT_ID = '" + request.body.subjectId + "')  IS NOT NULL THEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  USER_ATTEMPTS WHERE USER_ID = 'U0001' AND SUBJECT_ID = 'S001') + 1 ELSE 1 END AS ATTEMPT FROM SYSIBM.SYSDUMMY1;"
+    var queryToFetchAttempt = "SELECT CASE  WHEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  USER_ATTEMPTS WHERE USER_ID = '" + request.body.userId + "' AND SUBJECT_ID = '" + request.body.subjectId + "')  IS NOT NULL THEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  USER_ATTEMPTS WHERE USER_ID = '" + request.body.userId + "' AND SUBJECT_ID = '" + request.body.subjectId + "') + 1 ELSE 1 END AS ATTEMPT FROM SYSIBM.SYSDUMMY1;"
     conn.query(queryToFetchAttempt, function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
       }
+      attempt = data[0].ATTEMPT;
+      for (var i =0 ; i<request.body.testDetails.length; i++) {
+        var queryToInsertUserAttempt = "INSERT INTO USER_ATTEMPTS VALUES('" + userId + "','" + subjectId + "','" + request.body.testDetails[i].questionId + "','" + attempt + "','" + request.body.testDetails[i].score + "');";
+        conn.query(queryToInsertUserAttempt, function (err, data1) {
+          if (err) {
+            return response.json({ success: -2, message: err });
+          }
+          
+        });
+      }
       conn.close(function () {
-        attempt = data.ATTEMPT;
+        return response.json({ success: 1, message: 'Data Inserted!' });
       });
     });
-
-    for (var item in request.body.testDetails) {
-      var queryToInsertUserAttempt = "INSERT INTO USER_ATTEMPTS VALUES('" + userId + "','" + subjectId + "','" + item.questionId + "','" + attempt + "','" + item.score + "');";
-      conn.query(queryToInsertUserAttempt, function (err, data1) {
-        if (err) {
-          return response.json({ success: -2, message: err });
-        }
-        conn.close(function () {
-        });
-      });
-    }
-    return response.json({ success: 1, message: 'Data Added!' });
   });
 })
 
@@ -115,18 +112,15 @@ app.post('/postQuery', function (request, response, next) {
       if (err) {
         return response.json({ success: -1, message: err });
       }
-      conn.close(function () {
-        queryId = data.QUERYID;
-      });
-    });
-
-    var queryToInsertToStudQuery = "INSERT INTO STUDENT_QUERIES VALUES('" + queryId + "','" + request.body.studentId + "','" + request.body.questionId + "','" + request.body.studentQuestion + "','" + request.body.teacherId + "','');"
-    conn.query(queryToInsertToStudQuery, function (err, data1) {
-      if (err) {
-        return response.json({ success: -1, message: err });
-      }
-      conn.close(function () {
-        return response.json({ success: 1, message: 'Data Inserted!', data: data });
+      queryId = data[0].QUERYID;
+      var queryToInsertToStudQuery = "INSERT INTO STUDENT_QUERIES VALUES('" + queryId + "','" + request.body.studentId + "','" + request.body.questionId + "','" + request.body.studentQuestion + "','" + request.body.teacherId + "','');"
+      conn.query(queryToInsertToStudQuery, function (err, data1) {
+        if (err) {
+          return response.json({ success: -2, message: err });
+        }
+        conn.close(function () {
+          return response.json({ success: 1, message: 'Data Inserted!', data: data1 });
+        });
       });
     });
   });
@@ -155,7 +149,7 @@ app.post('/getQueryByTeacher', function (request, response, next) {
     if (err) {
       return response.json({ success: -1, message: err });
     }
-    conn.query("SELECT * FROM " + process.env.DB_SCHEMA + ".STUDENT_QUERIES WHERE  TEACHER_ID = '" + request.body.teacherId + ";", function (err, data) {
+    conn.query("SELECT * FROM " + process.env.DB_SCHEMA + ".STUDENT_QUERIES WHERE  TEACHER_ID = '" + request.body.teacherId + "';", function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
       }
@@ -172,7 +166,7 @@ app.post('/getQueryByStudent', function (request, response, next) {
     if (err) {
       return response.json({ success: -1, message: err });
     }
-    conn.query("SELECT * FROM " + process.env.DB_SCHEMA + ".STUDENT_QUERIES WHERE  STUDENT_ID = '" + request.body.studentId + ";", function (err, data) {
+    conn.query("SELECT * FROM " + process.env.DB_SCHEMA + ".STUDENT_QUERIES WHERE  STUDENT_ID = '" + request.body.studentId + "';", function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
       }
