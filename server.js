@@ -15,10 +15,6 @@ app.get('/', function (request, response) {
   return response.json({ success: 1, message: 'api works!' })
 });
 
-app.get('/', function (request, response) {
-  return response.json({ success: 1, message: 'api works!' })
-});
-
 app.post('/getUser', function (request, response) {
   ibmdb.open(connStr, function (err, conn) {
     if (err) {
