@@ -1,4 +1,42 @@
-<div *ngFor="let item of data">
+<!dochtml>
+<html>
+<head>
+<style>
+    #textboxid { height:30px; width: 350px; } 
+    #passwordboxid { height:30px; width: 350px; } 
+    .space {padding-left: 3rem; text-align: center; padding-left: 33rem;}
+    .button {
+        height: 30px;
+        width: 70px;
+        }
+</style>
+</head>
+<body>
+    <div style="background-color:rgb(235, 244, 247)">
+    <img style="padding-left: 30rem;" src="../assets/InquisitivemindsLogo.jpg">
+    <h1 style="text-align: center;">Welcome to Inquisitive Minds</h1>
+    <label class="space">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="email" id="textboxid">
+    </label><br><br>
+    <label style="padding-left: 33rem;">Password:
+        <input type="password" id="passwordboxid">
+    </label><br><br>
+    <div style="text-align:center" >  
+        <input class="button" type="submit" value="Login"/> 
+    </div><br><br><br><br><br><br><br>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <div *ngFor="let item of data">
     <div>{{item['QUESTION']}}</div>
     <div>
         <input type="radio" value="{{item['OPTION1']}}" name="{{item['ID']}}" >
@@ -17,4 +55,4 @@
         <label for="female">{{item['OPTION4']}}</label>
      </div>   
 </div>
-<button type="submit">Submit</button>
+<button type="submit">Submit</button> -->
