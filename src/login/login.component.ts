@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   aquireData(){
-    var dataObs = this._httpService.getQuestionsFromDatabase();
+    var dataObs = this._httpService.getQuestions('S1');
     dataObs.subscribe(data=>{
       if(data['success'] != 1){
         console.log(data);
