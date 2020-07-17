@@ -37,12 +37,13 @@ app.post('/addQuestion', function (request, response) {
     if (err) {
       return response.json({ success: -1, message: err });
     }
-    var queryToGetNewId = "SELECT CONCAT('Q' , (CAST(MAX(SUBSTRING(QUESTION_ID, 2, LENGTH(QUESTION_ID)-1))  AS NUMERIC) + 1)) AS NEWID FROM QUESTIONS;"
+    var queryToGetNewId = "SELECT CONCAT('Q' , (CAST(MAX(SUBSTRING(QUESTION_ID, 2, LENGTH(QUESTION_ID)-1))  AS NUMERIC) + 1)) AS NEWID FROM " + process.env.DB_SCHEMA + ".QUESTIONS;"
     conn.query(queryToGetNewId, function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
-      }
-      var queryToInserData = "INSERT INTO QUESTIONS VALUES('" + data.NEWID + "','" + request.body.subjectid + "','" + request.body.question + "','" + request.body.option1 + "','" + request.body.option2 + "','" + request.body.option3 + "','" + request.body.option4 + "','" + request.body.correctAnswer + "','" + request.body.option1Desc + "','" + request.body.option2Desc + "','" + request.body.option3Desc + "','" + request.body.option4Desc + "','" + request.body.userId + "');";
+      }    
+      var queryToInserData = "INSERT INTO " + process.env.DB_SCHEMA + ".QUESTIONS VALUES('" + data[0]["NEWID"] + "','" + request.body.subjectid + "','" + request.body.question + "','" + request.body.option1 + "','" + request.body.option2 + "','" + request.body.option3 + "','" + request.body.option4 + "','" + request.body.correctAnswer + "','" + request.body.option1Desc + "','" + request.body.option2Desc + "','" + request.body.option3Desc + "','" + request.body.option4Desc + "','" + request.body.userId + "');";
+      console.log(queryToInserData);
       conn.query(queryToInserData, function (err, data1) {
         if (err) {
           return response.json({ success: -2, message: err });
@@ -79,14 +80,14 @@ app.post('/submitTest', function (request, response, next) {
     var userId = request.body.userId;
     var subjectId = request.body.subjectId;
     var attempt = 0;
-    var queryToFetchAttempt = "SELECT CASE  WHEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  USER_ATTEMPTS WHERE USER_ID = '" + request.body.userId + "' AND SUBJECT_ID = '" + request.body.subjectId + "')  IS NOT NULL THEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  USER_ATTEMPTS WHERE USER_ID = '" + request.body.userId + "' AND SUBJECT_ID = '" + request.body.subjectId + "') + 1 ELSE 1 END AS ATTEMPT FROM SYSIBM.SYSDUMMY1;"
+    var queryToFetchAttempt = "SELECT CASE  WHEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  " + process.env.DB_SCHEMA + ".USER_ATTEMPTS WHERE USER_ID = '" + request.body.userId + "' AND SUBJECT_ID = '" + request.body.subjectId + "')  IS NOT NULL THEN (SELECT MAX(ATTEMPT_NUMBER)  AS ATTEMPT  FROM  " + process.env.DB_SCHEMA + ".USER_ATTEMPTS WHERE USER_ID = '" + request.body.userId + "' AND SUBJECT_ID = '" + request.body.subjectId + "') + 1 ELSE 1 END AS ATTEMPT FROM SYSIBM.SYSDUMMY1;"
     conn.query(queryToFetchAttempt, function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
       }
       attempt = data[0].ATTEMPT;
       for (var i =0 ; i<request.body.testDetails.length; i++) {
-        var queryToInsertUserAttempt = "INSERT INTO USER_ATTEMPTS VALUES('" + userId + "','" + subjectId + "','" + request.body.testDetails[i].questionId + "','" + attempt + "','" + request.body.testDetails[i].score + "');";
+        var queryToInsertUserAttempt = "INSERT INTO " + process.env.DB_SCHEMA + ".USER_ATTEMPTS VALUES('" + userId + "','" + subjectId + "','" + request.body.testDetails[i].questionId + "','" + attempt + "','" + request.body.testDetails[i].score + "');";
         conn.query(queryToInsertUserAttempt, function (err, data1) {
           if (err) {
             return response.json({ success: -2, message: err });
@@ -107,13 +108,13 @@ app.post('/postQuery', function (request, response, next) {
       return response.json({ success: -1, message: err });
     }
     var queryId = 0;
-    var queryToQueryId = "SELECT CASE  WHEN  (SELECT CONCAT('SQ' , (CAST(MAX(SUBSTRING(STUDENT_QUERY_ID, 3, LENGTH(STUDENT_QUERY_ID)-1))  AS NUMERIC) + 1)) AS NEWID FROM STUDENT_QUERIES)  IS NOT NULL THEN (SELECT CONCAT('SQ' , (CAST(MAX(SUBSTRING(STUDENT_QUERY_ID, 3, LENGTH(STUDENT_QUERY_ID)-1))  AS NUMERIC) + 1)) AS NEWID FROM STUDENT_QUERIES) ELSE 'SQ1' END AS QUERYID FROM SYSIBM.SYSDUMMY1;"
+    var queryToQueryId = "SELECT CASE  WHEN  (SELECT CONCAT('SQ' , (CAST(MAX(SUBSTRING(STUDENT_QUERY_ID, 3, LENGTH(STUDENT_QUERY_ID)-1))  AS NUMERIC) + 1)) AS NEWID FROM STUDENT_QUERIES)  IS NOT NULL THEN (SELECT CONCAT('SQ' , (CAST(MAX(SUBSTRING(STUDENT_QUERY_ID, 3, LENGTH(STUDENT_QUERY_ID)-1))  AS NUMERIC) + 1)) AS NEWID FROM " + process.env.DB_SCHEMA + ".STUDENT_QUERIES) ELSE 'SQ1' END AS QUERYID FROM SYSIBM.SYSDUMMY1;"
     conn.query(queryToQueryId, function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
       }
-      queryId = data[0].QUERYID;
-      var queryToInsertToStudQuery = "INSERT INTO STUDENT_QUERIES VALUES('" + queryId + "','" + request.body.studentId + "','" + request.body.questionId + "','" + request.body.studentQuestion + "','" + request.body.teacherId + "','');"
+      queryId = data[0]["QUERYID"];
+      var queryToInsertToStudQuery = "INSERT INTO " + process.env.DB_SCHEMA + ".STUDENT_QUERIES VALUES('" + queryId + "','" + request.body.studentId + "','" + request.body.questionId + "','" + request.body.studentQuestion + "','" + request.body.teacherId + "','');"
       conn.query(queryToInsertToStudQuery, function (err, data1) {
         if (err) {
           return response.json({ success: -2, message: err });
@@ -132,7 +133,7 @@ app.post('/updateQuery', function (request, response, next) {
       return response.json({ success: -1, message: err });
     }
     var queryId = 0;
-    var queryToUpdateQuery = "UPDATE STUDENT_QUERIES SET ANSWER = '" + request.body.answer + "' WHERE STUDENT_QUERY_ID = '" + request.body.studentQueryId + "'  ;"
+    var queryToUpdateQuery = "UPDATE " + process.env.DB_SCHEMA + ".STUDENT_QUERIES SET ANSWER = '" + request.body.answer + "' WHERE STUDENT_QUERY_ID = '" + request.body.studentQueryId + "'  ;"
     conn.query(queryToUpdateQuery, function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
@@ -167,6 +168,22 @@ app.post('/getQueryByStudent', function (request, response, next) {
       return response.json({ success: -1, message: err });
     }
     conn.query("SELECT * FROM " + process.env.DB_SCHEMA + ".STUDENT_QUERIES WHERE  STUDENT_ID = '" + request.body.studentId + "';", function (err, data) {
+      if (err) {
+        return response.json({ success: -1, message: err });
+      }
+      conn.close(function () {
+        return response.json({ success: 1, message: 'Data Received!', data: data });
+      });
+    });
+  });
+})
+
+app.post('/getAllSubject', function (request, response, next) {
+  ibmdb.open(connStr, function (err, conn) {
+    if (err) {
+      return response.json({ success: -1, message: err });
+    }
+    conn.query("SELECT * FROM " + process.env.DB_SCHEMA + ".SUBJECTS;", function (err, data) {
       if (err) {
         return response.json({ success: -1, message: err });
       }

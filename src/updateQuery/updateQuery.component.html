@@ -1,0 +1,63 @@
+<div>
+    <h2>Add Question</h2>
+    <form>
+        <div class="form-group">
+            <label for="Subject">Subject:</label>
+            <select class="form-control" id="subject" (change)="onChange('subject' , $event.target.value)">
+                <option></option>
+                <option *ngFor="let item of subjectsList" [(value)]="item.SUBJECT_ID">{{item.SUBJECT_NAME}}</option>
+            </select>
+            <span id="subjectValidation" ></span>
+        </div>
+        <div class="form-group">
+            <label for="question">Question:</label>
+            <input type="textarea" class="form-control" [(ngModel)]="question" name="question" />
+            <span id="questionValidation"></span>
+        </div>
+        <div class="form-group">
+            <label for="option1">Option 1:</label>
+            <input type="text" class="form-control" [(ngModel)]="option1" name="option1" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="option1Desc" name="option1Desc"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="option2">Option 2:</label>
+            <input type="text" class="form-control" [(ngModel)]="option2" name="option2" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="option2Desc" name="option2Desc" ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="option3">Option 3:</label>
+            <input type="text" class="form-control" [(ngModel)]="option3" name="option3" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="option3Desc" name="option3Desc" ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="option4">Option 4:</label>
+            <input type="text" class="form-control" [(ngModel)]="option4" name="option4" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="option4Desc" name="option4Desc" ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="CorrectAnswer">Correct Answer:</label>
+            <select class="form-control" (change)="onChange('correctAnswer' , $event.target.value)">
+                <option value=""></option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+                <option value="option4">Option 4</option>
+            </select>
+            <span id="CorrectAnswerValidation"></span>
+        </div>
+        <button class="btn btn-success" (click)="onSave()">Submit</button>
+        <div  [ngClass]="{'invisible': isHidden}">
+            <br />
+            <div  [ngClass]="{
+                'alert alert-success': isSuccess,
+                'alert alert-danger': !isSuccess }">
+                <strong [innerHtml]="msgHeading"></strong> <span [innerHtml]="msgContent"></span>
+            </div>
+        </div>
+        
+    </form>
+</div>
