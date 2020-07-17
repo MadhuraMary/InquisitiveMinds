@@ -8,12 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../login/login.component';
 import { addQuestionComponent } from '../addQuestion/addQuestion.component';
-// import { updateQueryComponent } from '../updateQuery/updateQuery.component';
+import { updateQueryComponent } from '../updateQuery/updateQuery.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    addQuestionComponent
+    addQuestionComponent,
+    updateQueryComponent
   ],
   imports: [
     BrowserModule,
