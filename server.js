@@ -102,6 +102,22 @@ app.post('/submitTest', function (request, response, next) {
   });
 })
 
+app.post('/getQuery', function (request, response, next) {
+  ibmdb.open(connStr, function (err, conn) {
+    if (err) {
+      return response.json({ success: -1, message: err });
+    }
+    conn.query("SELECT * FROM " + process.env.DB_SCHEMA + ".STUDENT_QUERIES WHERE  STUDENT_QUERY_ID = '" + request.body.studentQueryId + "';", function (err, data) {
+      if (err) {
+        return response.json({ success: -1, message: err });
+      }
+      conn.close(function () {
+        return response.json({ success: 1, message: 'Data Received!', data: data });
+      });
+    });
+  });
+})
+
 app.post('/postQuery', function (request, response, next) {
   ibmdb.open(connStr, function (err, conn) {
     if (err) {
