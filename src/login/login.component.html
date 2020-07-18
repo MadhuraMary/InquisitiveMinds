@@ -27,7 +27,7 @@
     </div>
 </body>
 </html> -->
-<div style="background-color:rgb(235, 244, 247)">
+<div style="background-color:rgb(235, 244, 247)" *ngIf="isLogin">
     <img style="display: block;margin-left: auto;margin-right: auto;" src="../assets/InquisitivemindsLogo.jpg">
     <h1 style="text-align: center;">Welcome to Inquisitive Minds</h1>
 
@@ -42,11 +42,12 @@
                 <input type="text" class="form-control" id="password" />
             </div>
             <div class="form-group text-center">
-                <input type="submit" class="btn btn-success" value="Login" />
+                <input type="submit" (click)="login()" class="btn btn-success" value="Login" />
             </div>
         </div>
     </div>
 </div>
+<router-outlet></router-outlet>
 
 
 

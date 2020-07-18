@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService }  from '../app/http.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +10,13 @@ import { HttpService }  from '../app/http.service';
 })
 export class LoginComponent implements OnInit {
   data:any;
-  constructor(private _httpService:HttpService) { 
+  isLogin:boolean;
+  constructor(private _httpService:HttpService, private router: Router) { 
     this.data = '';
   }
 
   ngOnInit() {
+    this.isLogin=true;
     this.aquireData();
   }
 
@@ -29,4 +33,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  login(){
+    this.isLogin=false;
+    this.router.navigate(['/home']);
+  }
 }
