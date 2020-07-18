@@ -7,12 +7,18 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../login/login.component';
+import { HomeComponent } from 'src/home/home.component';
+import { InstructionsComponent } from 'src/instructions/instructions.component';
+import { QuestionsPageComponent } from 'src/questions-page/questions-page.component';
 import { addQuestionComponent } from '../addQuestion/addQuestion.component';
 import { updateQueryComponent } from '../updateQuery/updateQuery.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    HomeComponent,
+    InstructionsComponent,
+    QuestionsPageComponent,
     addQuestionComponent,
     updateQueryComponent
   ],
