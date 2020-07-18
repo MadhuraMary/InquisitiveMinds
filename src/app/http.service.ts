@@ -37,6 +37,21 @@ export class HttpService {
       return this.http.post(url,{studentId:studentId}, this.httpOptions);
     }
 
+    getSubjects() {
+      var url = 'http://localhost:3000/getAllSubject';
+      return this.http.post(url, this.httpOptions);
+    }
+
+    addQuestion(subjectid, question, option1, option2, option3,option4,correctAnswer,option1Desc,option2Desc,option3Desc,option4Desc,userId){
+      var url = 'http://localhost:3000/addQuestion';
+      return this.http.post(url,{subjectid: subjectid, question:question, option1:option1, option2:option2, option3:option3,option4:option4,correctAnswer:correctAnswer,option1Desc:option1Desc,option2Desc:option2Desc,option3Desc:option3Desc,option4Desc:option4Desc,userId:userId}, this.httpOptions);
+    }
+
+    getQuery(studentQueryId){
+      var url = 'http://localhost:3000/getQuery';
+      return this.http.post(url,{studentQueryId:studentQueryId}, this.httpOptions);
+    }
+
     updateQuery(answer, studentQueryId){
       var url = 'http://localhost:3000/updateQuery';
       return this.http.post(url,{answer:answer,studentQueryId:studentQueryId}, this.httpOptions);

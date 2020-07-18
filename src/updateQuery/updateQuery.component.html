@@ -1,0 +1,21 @@
+<div>
+    <h2>Student Query:</h2>
+    <form>
+        <div *ngFor="let item of data">
+            <div class="form-group">
+                <label for="question">{{item['STUDENT_QUESTION']}}</label>
+                <input type="textarea" class="form-control" [(ngModel)]="item['ANSWER']" [ngModelOptions]="{standalone: true}"/>
+                <span id="answerValidation"></span>
+            </div>
+        </div>
+        <button class="btn btn-success" (click)="onSave()">Submit</button>
+        <div  [ngClass]="{'invisible': isHidden}">
+            <br />
+            <div  [ngClass]="{
+                'alert alert-success': isSuccess,
+                'alert alert-danger': !isSuccess }">
+                <strong [innerHtml]="msgHeading"></strong> <span [innerHtml]="msgContent"></span>
+            </div>
+        </div>
+    </form>
+</div>
