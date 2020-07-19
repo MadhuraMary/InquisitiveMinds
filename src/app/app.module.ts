@@ -12,6 +12,7 @@ import { InstructionsComponent } from 'src/instructions/instructions.component';
 import { QuestionsPageComponent } from 'src/questions-page/questions-page.component';
 import { addQuestionComponent } from '../addQuestion/addQuestion.component';
 import { updateQueryComponent } from '../updateQuery/updateQuery.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,7 @@ import { updateQueryComponent } from '../updateQuery/updateQuery.component';
     InstructionsComponent,
     QuestionsPageComponent,
     addQuestionComponent,
-    updateQueryComponent
+    updateQueryComponent,
   ],
   imports: [
     BrowserModule,

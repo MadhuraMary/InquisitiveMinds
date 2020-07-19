@@ -1,1 +1,72 @@
-<p>questions-page works!</p>
+<div>
+    <h2 *ngIf="!endQuestions">Answer the below question</h2>
+    <br>
+    <form >
+        <div *ngIf="endQuestions" style="text-align: center">End of the test. Click on submit button to see the result.</div>
+        <div *ngIf="!endQuestions">
+        <div class="form-group" >
+            <label class="form-label">{{currentquestion.QUESTION}}</label>
+        </div>
+        <div class="form-group">
+            <input type="radio" (change)="onChange(currentquestion.QUESTION_ID , $event.target.value,1)" name="{{currentquestion.QUESTION_ID}}" >
+            <label for="{{currentquestion.QUESTION_ID}}">&nbsp;{{currentquestion.OPTION_1}}</label>
+            <textarea readonly class="form-control" name="option1Desc" *ngIf="isOption1Selected" >{{currentquestion.OPTION_1_FURTHER_DETAILS}}</textarea>
+         </div>
+         <div class="form-group">
+            <input type="radio" (change)="onChange(currentquestion.QUESTION_ID , $event.target.value,2)" name="{{currentquestion.QUESTION_ID}}" >
+            <label for="{{currentquestion.QUESTION_ID}}">&nbsp;{{currentquestion.OPTION_2}}</label>
+            <textarea readonly class="form-control" name="option2Desc" *ngIf="isOption2Selected" >{{currentquestion.OPTION_2_FURTHER_DETAILS}}</textarea>
+         </div>
+         <div class="form-group">
+            <input type="radio" (change)="onChange(currentquestion.QUESTION_ID , $event.target.value,3)" name="{{currentquestion.QUESTION_ID}}" >
+            <label for="{{currentquestion.QUESTION_ID}}">&nbsp;{{currentquestion.OPTION_3}}</label>
+            <textarea readonly class="form-control" name="option3Desc" *ngIf="isOption3Selected" >{{currentquestion.OPTION_3_FURTHER_DETIALS}}</textarea>
+         </div>
+         <div class="form-group">
+            <input type="radio" (change)="onChange(currentquestion.QUESTION_ID , $event.target.value,4)" name="{{currentquestion.QUESTION_ID}}" >
+            <label for="{{currentquestion.QUESTION_ID}}">&nbsp;{{currentquestion.OPTION_4}}</label>
+            <textarea readonly class="form-control" name="option4Desc" *ngIf="isOption4Selected" >{{currentquestion.OPTION_4_FURTHER_DETAILS}}</textarea>
+         </div>
+        <!-- <div class="form-group">
+            <label for="option1">Option 1:</label>
+            <input type="radio" class="form-control" [(ngModel)]="option1" name="option1" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="question.OPTION_1_FURTHER_DETAILS" name="option1Desc"  ></textarea>
+        </div> -->
+        <!-- <div class="form-group">
+            <label for="option2">Option 2:</label>
+            <input type="text" class="form-control" [(ngModel)]="option2" name="option2" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="question.OPTION_2_FURTHER_DETAILS" name="option2Desc" ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="option3">Option 3:</label>
+            <input type="text" class="form-control" [(ngModel)]="option3" name="option3" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="question.OPTION_3_FURTHER_DETAILS" name="option3Desc" ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="option4">Option 4:</label>
+            <input type="text" class="form-control" [(ngModel)]="question.OPTION_1_FURTHER_DETAILS" name="option4" />
+            <br />
+            <textarea class="form-control" [(ngModel)]="question.OPTION_4_FURTHER_DETAILS" name="option4Desc" ></textarea>
+        </div> -->
+        <!-- <div class="form-group">
+            <label for="CorrectAnswer">Correct Answer:</label>
+            <select class="form-control" (change)="onChange('correctAnswer' , $event.target.value)">
+                <option value=""></option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+                <option value="option4">Option 4</option>
+            </select>
+            <span id="CorrectAnswerValidation"></span>
+        </div> -->
+    </div>
+        <button class="btn btn-success" (click)="onSave()" *ngIf="!endQuestions">Next Question</button>
+        <div class="form-group text-center" *ngIf="endQuestions">
+            <br>
+        <button class="btn btn-success" (click)="onSave()">Submit</button> 
+        </div>   
+    </form>
+</div>

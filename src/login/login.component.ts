@@ -10,13 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   data:any;
-  isLogin:boolean;
   constructor(private _httpService:HttpService, private router: Router) { 
     this.data = '';
   }
 
   ngOnInit() {
-    this.isLogin=true;
     this.aquireData();
   }
 
@@ -34,7 +32,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.isLogin=false;
     this.router.navigate(['/home']);
   }
 }
