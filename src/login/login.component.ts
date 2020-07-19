@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.isHidden = false;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    var email = (<HTMLInputElement>document.getElementById("email")).value;
+    var password = (<HTMLInputElement>document.getElementById("password")).value;
     if(email != '' && password != ''){
       var dataObs = this._httpService.getUser(email,password);
       dataObs.subscribe(data=>{
@@ -34,10 +34,12 @@ export class LoginComponent implements OnInit {
         else{
           if(data['data'].length > 0){
             this.isSuccess = true;
-            sessionStorage.setItem('Name',data[0].NAME);
-            sessionStorage.setItem('Role',data[0].ROLE)
-            sessionStorage.setItem('Userid',data[0].USER_ID)
-            sessionStorage.setItem('UserName',data[0].USER_NAME);  
+            sessionStorage.setItem('Name',data['data'][0]['NAME']);
+            sessionStorage.setItem('Role',data['data'][0]['ROLE']);
+            console.log(sessionStorage);
+            console.log(data);
+            sessionStorage.setItem('Userid',data['data'].USER_ID);
+            sessionStorage.setItem('UserName',data['data'].USER_NAME);  
             this.router.navigate(['/home']); 
           }
         }

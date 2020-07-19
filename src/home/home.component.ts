@@ -11,6 +11,9 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    if(sessionStorage.getItem('Role') =='Teacher'){
+      this.router.navigate(['/addQuestion']);
+    }
   }
   takeTest(){
     this.router.navigate(['/questionsPage']);

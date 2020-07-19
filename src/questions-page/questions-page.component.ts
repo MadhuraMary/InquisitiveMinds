@@ -14,12 +14,13 @@ export class QuestionsPageComponent implements OnInit {
   constructor(private _httpService:HttpService, private router: Router) { }
 
   ngOnInit() { 
-
+    this.userId=sessionStorage.getItem('UserId');
+    this.subjectId=sessionStorage.getItem('SubjectId');
     this.getQuestions()
   }
 
   getQuestions(){
-    var dataObs = this._httpService.getQuestions('S1');
+    var dataObs = this._httpService.getQuestions(this.subjectId);
     dataObs.subscribe(data => {
       if (data['success'] == 1) {     
         this.allQuestions = data['data'];
@@ -38,8 +39,8 @@ export class QuestionsPageComponent implements OnInit {
       var flag = 0;
       var allOptions = document.getElementsByName(this.allQuestions[i]['QUESTION_ID']);
       for(var j = 0; j < allOptions.length; j++) {
-        if(allOptions[j].checked){
-          selectedValue = allOptions[j].value;
+        if((<HTMLInputElement>allOptions[j]).checked){
+          selectedValue = (<HTMLInputElement>allOptions[j]).value;
           var index = j + 1;
           selectedOptionDesc = "OPTION_" + index  + "_FURTHER_DETAILS";
         }     
@@ -65,7 +66,7 @@ export class QuestionsPageComponent implements OnInit {
       testDetails.push(obj) ;
     }
     document.getElementById("result").innerHTML = "Total Question: " + totalQuestionsCount + "<br/>" + "Correct Answers: " + totalCorrectAnswersCount+ "<br/>" + "Wrong Answers: " + totalWrongAswersCount;
-    var dataObs = this._httpService.submitTest('U2',  'S1', testDetails);
+    var dataObs = this._httpService.submitTest(this.userId,  this.subjectId, testDetails);
     dataObs.subscribe(data => {
       if (data['success'] == 1) {     
         console.log(data['message']) ;

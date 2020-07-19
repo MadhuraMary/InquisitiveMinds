@@ -34,7 +34,9 @@ export class addQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userId=sessionStorage.getItem('UserId');
     this.getSubjectsList();
+    
   }
 
   getSubjectsList() {
