@@ -28,12 +28,6 @@ export class QuestionsPageComponent implements OnInit {
       this.index=0;
       sessionStorage.setItem('index',this.index);
     }
-    if(sessionStorage.getItem('correctAttempt') !=null){
-      this.correctAttemptCount=sessionStorage.getItem('correctAttempt');
-    }else{
-      this.correctAttemptCount=0;
-      sessionStorage.setItem('correctAttempt',this.correctAttemptCount);
-    }
     this.getQuestions();    
   }
 
@@ -50,7 +44,7 @@ export class QuestionsPageComponent implements OnInit {
     
   }
 
-  onChange(id:string,targetValue: Event,optionNumber:number){
+  onChange(id:string,targetValue:Event,optionNumber:number){
     if(optionNumber==1){
       this.isOption1Selected=true;
       this.isOption2Selected=false;
