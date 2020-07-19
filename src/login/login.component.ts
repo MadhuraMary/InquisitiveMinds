@@ -9,29 +9,45 @@ import { Observable } from 'rxjs';
   styleUrls: []
 })
 export class LoginComponent implements OnInit {
-  data:any;
-  constructor(private _httpService:HttpService, private router: Router) { 
-    this.data = '';
-  }
+  isSuccess: boolean = false;
+  isHidden: boolean = true;
+  msgHeading = '';
+  msgContent = '';
 
-  ngOnInit() {
-    this.aquireData();
-  }
+  constructor(private _httpService:HttpService, private router: Router) {  }
 
-  aquireData(){
-    var dataObs = this._httpService.getQuestions('S1');
-    dataObs.subscribe(data=>{
-      if(data['success'] != 1){
-        console.log(data);
-      }
-      else{
-        console.log(data);
-        this.data = data['data'];      
-      }
-    })
-  }
+  ngOnInit() { }
 
   login(){
-    this.router.navigate(['/home']);
+    this.isHidden = false;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    if(email != '' && password != ''){
+      var dataObs = this._httpService.getUser(email,password);
+      dataObs.subscribe(data=>{
+        console.log(data)
+        if(data['success'] != 1){
+          this.isSuccess = false;
+          this.msgHeading = 'Fail!!';
+          this.msgContent = 'Please enter the valid username and password';
+        }
+        else{
+          if(data['data'].length > 0){
+            this.isSuccess = true;
+            sessionStorage.setItem('Name',data[0].NAME);
+            sessionStorage.setItem('Role',data[0].ROLE)
+            sessionStorage.setItem('Userid',data[0].USER_ID)
+            sessionStorage.setItem('UserName',data[0].USER_NAME);  
+            this.router.navigate(['/home']); 
+          }
+        }
+      })
+    }
+    else {
+      this.isSuccess = false;
+      this.msgHeading = 'Fail!!';
+      this.msgContent = 'Please enter the username and password';
+    }
   }
+  
 }

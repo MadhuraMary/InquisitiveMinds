@@ -42,7 +42,15 @@
                 <input type="text" class="form-control" id="password" />
             </div>
             <div class="form-group text-center">
-                <input type="submit" (click)="login()" class="btn btn-success" value="Login" />
+                <button class="btn btn-success" (click)="login()">Login</button>
+            </div>
+            <div  [ngClass]="{'invisible': isHidden}">
+                <br />
+                <div  [ngClass]="{
+                    'alert alert-success': isSuccess,
+                    'alert alert-danger': !isSuccess }">
+                    <strong [innerHtml]="msgHeading"></strong> <span [innerHtml]="msgContent"></span>
+                </div>
             </div>
         </div>
     </div>
