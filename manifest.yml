@@ -1,0 +1,6 @@
+applications:
+- domain: null
+  host: null
+  memory: 64M
+  name: InquisitiveMinds2
+  random-route: true
