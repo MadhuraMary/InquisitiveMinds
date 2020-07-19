@@ -8,82 +8,73 @@ import { Router } from '@angular/router';
   styleUrls: ['./questions-page.component.scss']
 })
 export class QuestionsPageComponent implements OnInit {
-  questions: any;
-  isOption1Selected:boolean;
-  isOption2Selected:boolean;
-  isOption3Selected:boolean;
-  isOption4Selected:boolean;
-  index:any;
-  currentquestion:any;
-  correctAttemptCount:any;
-  totalQuestionsCount: any;
-  endQuestions: boolean;
-
+  allQuestions: any;
+  userId: string = "";
+  subjectId: string = "";
   constructor(private _httpService:HttpService, private router: Router) { }
 
-  ngOnInit() {
-    if(sessionStorage.getItem('index') !=null){
-      this.index=sessionStorage.getItem('index');
-    }else{
-      this.index=0;
-      sessionStorage.setItem('index',this.index);
-    }
-    if(sessionStorage.getItem('correctAttempt') !=null){
-      this.correctAttemptCount=sessionStorage.getItem('correctAttempt');
-    }else{
-      this.correctAttemptCount=0;
-      sessionStorage.setItem('correctAttempt',this.correctAttemptCount);
-    }
-    this.getQuestions();    
-  }
+  ngOnInit() { 
 
-  onSave(){
-    this.index++;
-    if(this.index<this.totalQuestionsCount){
-      this.currentquestion=this.questions[this.index];
-      sessionStorage.setItem('index',this.index);
-      this.router.navigateByUrl('/questionsPage');
-    }else{
-      this.endQuestions=true;
-      sessionStorage.clear();
-    }
-    
-  }
-
-  onChange(id:string,targetValue: Event,optionNumber:number){
-    if(optionNumber==1){
-      this.isOption1Selected=true;
-      this.isOption2Selected=false;
-      this.isOption3Selected=false;
-      this.isOption4Selected=false;
-    }else if(optionNumber==2){
-      this.isOption1Selected=false;
-      this.isOption2Selected=true;
-      this.isOption3Selected=false;
-      this.isOption4Selected=false;
-    }else if(optionNumber==3){
-      this.isOption1Selected=false;
-      this.isOption2Selected=false;
-      this.isOption3Selected=true;
-      this.isOption4Selected=false;
-    }else{
-      this.isOption1Selected=false;
-      this.isOption2Selected=false;
-      this.isOption3Selected=false;
-      this.isOption4Selected=true;
-    }
+    this.getQuestions()
   }
 
   getQuestions(){
     var dataObs = this._httpService.getQuestions('S1');
     dataObs.subscribe(data => {
       if (data['success'] == 1) {     
-        this.questions = data['data'];
+        this.allQuestions = data['data'];
       }
-      console.log(this.questions);
-      this.totalQuestionsCount=this.questions.length;
-      this.currentquestion=this.questions[this.index];
     })
+  }
+
+  onSave(){
+    var totalQuestionsCount = this.allQuestions.length;
+    var totalCorrectAnswersCount = 0;
+    var totalWrongAswersCount = 0;
+    var selectedValue = "";
+    var selectedOptionDesc;
+    var testDetails = [];
+    for (let i = 0; i < totalQuestionsCount; i++) {
+      var flag = 0;
+      var allOptions = document.getElementsByName(this.allQuestions[i]['QUESTION_ID']);
+      for(var j = 0; j < allOptions.length; j++) {
+        if(allOptions[j].checked){
+          selectedValue = allOptions[j].value;
+          var index = j + 1;
+          selectedOptionDesc = "OPTION_" + index  + "_FURTHER_DETAILS";
+        }     
+      }
+      document.getElementById(this.allQuestions[i]['QUESTION_ID']).innerHTML = "";
+      if(selectedValue ===  this.allQuestions[i]['CORRECT_ANSWER']){
+        flag = 1;
+        document.getElementById(this.allQuestions[i]['QUESTION_ID']).style.color = "green";
+        document.getElementById(this.allQuestions[i]['QUESTION_ID']).innerHTML = "Correct Answer!! " + this.allQuestions[i][selectedOptionDesc];
+        totalCorrectAnswersCount += 1;
+      }
+      else if(selectedValue === ""){
+        document.getElementById(this.allQuestions[i]['QUESTION_ID']).style.color = "red";
+        document.getElementById(this.allQuestions[i]['QUESTION_ID']).innerHTML = "Wrong Answer!! " + "Please select a option";
+        totalWrongAswersCount += 1;
+      }
+      else{
+        document.getElementById(this.allQuestions[i]['QUESTION_ID']).style.color = "red";
+        document.getElementById(this.allQuestions[i]['QUESTION_ID']).innerHTML = "Wrong Answer!! " + this.allQuestions[i][selectedOptionDesc];
+        totalWrongAswersCount += 1;
+      }
+      var obj = {questionId: this.allQuestions[i]['QUESTION_ID'], score: flag}    
+      testDetails.push(obj) ;
+    }
+    document.getElementById("result").innerHTML = "Total Question: " + totalQuestionsCount + "<br/>" + "Correct Answers: " + totalCorrectAnswersCount+ "<br/>" + "Wrong Answers: " + totalWrongAswersCount;
+    var dataObs = this._httpService.submitTest('U2',  'S1', testDetails);
+    dataObs.subscribe(data => {
+      if (data['success'] == 1) {     
+        console.log(data['message']) ;
+      }
+      else {
+          console.log(data)
+      }
+    })
+    
   }
 
 }

@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <h2 *ngIf="!endQuestions">Answer the below question</h2>
     <br>
     <form >
@@ -61,7 +61,7 @@
                 <option value="option4">Option 4</option>
             </select>
             <span id="CorrectAnswerValidation"></span>
-        </div> -->
+        </div> 
     </div>
         <button class="btn btn-success" (click)="onSave()" *ngIf="!endQuestions">Next Question</button>
         <div class="form-group text-center" *ngIf="endQuestions">
@@ -69,4 +69,25 @@
         <button class="btn btn-success" (click)="onSave()">Submit</button> 
         </div>   
     </form>
+</div> -->
+
+<div>
+    <h2>Assesment:</h2> <br/>
+    <form>
+        <div *ngFor="let question of allQuestions; let i = index" class="form-group">
+            {{i + 1}}. <label for="question">{{question['QUESTION']}}</label> <br/>
+            <input type="radio" name="{{question['QUESTION_ID']}}" value="{{question['OPTION_1']}}" /> {{question['OPTION_1']}}  <br/>
+            <input type="radio" name="{{question['QUESTION_ID']}}" value="{{question['OPTION_2']}}" /> {{question['OPTION_2']}}  <br/>
+            <input type="radio" name="{{question['QUESTION_ID']}}" value="{{question['OPTION_3']}}" /> {{question['OPTION_3']}}  <br/>  
+            <input type="radio" name="{{question['QUESTION_ID']}}" value="{{question['OPTION_4']}}" /> {{question['OPTION_4']}}  <br/>  
+            <span id="{{question['QUESTION_ID']}}" ></span>
+        </div>
+        <br />
+        <div class="form-group" *ngIf="allQuestions">
+            <button class="btn btn-success" (click)="onSave()">Submit</button>
+            <div id="result"></div>
+        </div>
+        
+    </form>
+    
 </div>
