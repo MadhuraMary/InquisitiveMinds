@@ -16,6 +16,9 @@ export class QuestionsPageComponent implements OnInit {
   ngOnInit() { 
     this.userId=sessionStorage.getItem('UserId');
     this.subjectId=sessionStorage.getItem('SubjectId');
+    if(this.subjectId == null || this.subjectId == undefined){
+      this.subjectId='S1';
+    }
     this.getQuestions()
   }
 
