@@ -70,9 +70,11 @@
         </div>   
     </form>
 </div> -->
-
 <div>
-    <h2>Assesment:</h2> <br/>
+    <h2>Assessment:</h2>    
+<nav>
+    <a style="text-align: right;" href="https://inquisitive-bot.herokuapp.com/" target="_blank"><h4>Chat with our eduBOT</h4></a>
+</nav>  
     <form>
         <div *ngFor="let question of allQuestions; let i = index" class="form-group">
             {{i + 1}}. <label for="question">{{question['QUESTION']}}</label> <br/>

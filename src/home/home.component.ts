@@ -15,7 +15,5 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/addQuestion']);
     }
   }
-  takeTest(){
-    this.router.navigate(['/questionsPage']);
-  }
+  
 }

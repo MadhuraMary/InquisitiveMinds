@@ -1,10 +1,11 @@
-<nav style="padding-left: 2rem;">
-    <span>Total Attempts: 03 </span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Current Attempt: 04</span>
-</nav>
 <br>
-<div class="form-group">
-    <label for="Subject">Subject</label>
-    <select class="form-control" id="subject" (change)="onChange('subject' , $event.target.value)">
+<br>
+<div style="background-color:rgb(235, 244, 247)">
+    <br>
+<br>
+<div class="form-group col-4">
+    <label for="Subject"><b>Subject</b></label>
+    <select class="form-control align-items-center" id="subject" (change)="onChange('subject' , $event.target.value)">
         <option></option>
         <option *ngFor="let item of subjectsList" [(value)]="item.SUBJECT_ID">{{item.SUBJECT_NAME}}</option>
     </select>
@@ -13,24 +14,39 @@
 <br>
 <div class="row h-100 justify-content-center align-items-center">
     <div class="col-10 col-md-8 col-lg-6" style="padding-top: 20px">
-        <h5 style="text-align: center;">Please read the instructions clearly</h5><br>   
+        <h5 style="text-align: center;">Please read the instructions carefully</h5><br>   
     </div>    
 </div>
 <div class="row h-100 justify-content-center align-items-center">
     <div class="col-10 col-md-8 col-lg-6">
-        <div>
-            <div>1.The first point in instructions is you have to read the instruction properly.</div>
-            <div>2.The second point in instructions is you have attempt all the questions.</div>
-            <div>3.The third point in instructions is you have attempt all the questions.</div>
-            <div>4.The fourth point in instructions is you have attempt all the questions.</div>
-            <div>5.The fifth point in instructions is you have attempt all the questions.</div>
-        </div>
+        <ul>
+            <li>
+                This application aids you in making your understanding of the concepts better.
+            </li>
+            <li>
+                Even if you give any wrong answers, you will be provided with link/detail which once you study it will enable you to give the right answer on the next attempt.
+            </li>
+            <li>
+                You can utilize the Chat with eduBOT link in case if you face any technical issues also for some additional information regarding the options
+            </li>
+            <li>
+                The results will be displayed  on click of submit button for that attempt
+            </li>
+        </ul>
     </div>
 </div>
 <div class="row h-100 justify-content-left align-items-left">
     <div class="col-10 col-md-8 col-lg-6" style="padding-top: 20px">
         <div class="form-group text-center">
             <input type="checkbox" value="Terms" id="terms" [(ngModel)]="isChecked" required />&nbsp;I have read and understood the instructions for my knowledge.
+        </div>
+    </div>
+</div>
+</div>
+<div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6" style="padding-top: 20px">
+        <div class="form-group text-center">
+            <input type="submit" (click)="takeTest()" class="btn btn-success" value="Take Test" />
         </div>
     </div>
 </div>

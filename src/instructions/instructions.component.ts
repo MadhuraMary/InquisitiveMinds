@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService }  from '../app/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instructions',
@@ -10,7 +11,7 @@ export class InstructionsComponent implements OnInit {
   isChecked :boolean;
   subjectSelected: any;
   subjectsList: any;
-  constructor(private _httpService:HttpService) { }
+  constructor(private _httpService:HttpService,private router: Router) { }
 
   ngOnInit() {
     this.getSubjectsList();
@@ -21,6 +22,9 @@ export class InstructionsComponent implements OnInit {
     if(name == 'subject')
       this.subjectSelected = value;
       sessionStorage.setItem('SubjectId', this.subjectSelected);
+  }
+  takeTest(){
+    this.router.navigate(['/questionsPage']);
   }
 
   getSubjectsList() {

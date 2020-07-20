@@ -36,10 +36,8 @@ export class LoginComponent implements OnInit {
             this.isSuccess = true;
             sessionStorage.setItem('Name',data['data'][0]['NAME']);
             sessionStorage.setItem('Role',data['data'][0]['ROLE']);
-            console.log(sessionStorage);
-            console.log(data);
-            sessionStorage.setItem('Userid',data['data'].USER_ID);
-            sessionStorage.setItem('UserName',data['data'].USER_NAME);  
+            sessionStorage.setItem('Userid',data['data'][0]['USER_ID']);
+            sessionStorage.setItem('UserName',data['data'][0]['USER_NAME']);  
             this.router.navigate(['/home']); 
           }
         }
