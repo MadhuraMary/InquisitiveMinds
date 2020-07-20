@@ -49,7 +49,9 @@
             </select>
             <span id="CorrectAnswerValidation"></span>
         </div>
-        <button class="btn btn-success" (click)="onSave()">Submit</button>
+        <button class="btn btn-success" (click)="onSave()" >Submit</button>&nbsp;&nbsp;
+        <button class="btn btn-success" (click)="addNewQuestion()" *ngIf="displayAddQuestion">Add question&nbsp;&nbsp;</button>
+        <button class="btn" (click)="cancel()">LogOut</button>
         <div  [ngClass]="{'invisible': isHidden}">
             <br />
             <div  [ngClass]="{

@@ -27,6 +27,10 @@ export class QuestionsPageComponent implements OnInit {
       }
     })
   }
+  cancel(){
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
 
   onSave(){
     var totalQuestionsCount = this.allQuestions.length;

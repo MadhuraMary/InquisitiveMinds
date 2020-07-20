@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService }  from '../app/http.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-addQuestion',
@@ -26,14 +26,15 @@ export class addQuestionComponent implements OnInit {
   isHidden: boolean = true;
   msgHeading = '';
   msgContent = '';
-  constructor(private _httpService:HttpService, private route: ActivatedRoute) { 
+  displayAddQuestion: boolean;
+  constructor(private _httpService:HttpService, private route: ActivatedRoute,private router: Router) { 
     this.subjectsList = [];
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
   });
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.userId=sessionStorage.getItem('UserId');
     this.getSubjectsList();
     
@@ -46,6 +47,25 @@ export class addQuestionComponent implements OnInit {
         this.subjectsList = data['data'];
       }
     })
+  }
+
+  addNewQuestion(){
+    this.question = '';
+    this.option1 = '';
+    this.option2 = '';
+    this.option3 = '';
+    this.option4 = '';
+    this.option1Desc = '';
+    this.option2Desc = '';
+    this.option3Desc = '';
+    this.option4Desc = '';
+    this.correctAnswer = '';
+    this.router.navigate(['/addQuestion'])
+  }
+  
+  cancel(){
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 
   onChange(name,value){
@@ -132,12 +152,14 @@ export class addQuestionComponent implements OnInit {
         if (data['success'] != 1) {
           this.msgHeading = 'Fail!!';
           this.msgContent = 'Please try again';
+          this.displayAddQuestion=false;
           console.log(data['message'])
         }
         else {
           this.isSuccess = true;
           this.msgHeading = 'Sucess!!';
           this.msgContent = data['message'];
+          this.displayAddQuestion=true;
         }
       })
     }
