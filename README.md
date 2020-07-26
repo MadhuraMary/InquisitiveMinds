@@ -9,7 +9,7 @@ Inquisitive Minds Remote Education application idea/solution is a "One-platform 
 <b>Track</b> : Covid-19-Remote Education. 
 We chose the remote education track because we see that we can augment the learning process of students and curb major challenges faced by teachers who can prepare/deliever the   lectures, prepare an assessment while sitting at home and maintaning social distancing.
 <br>
-<b>Overview/Crux:</b>Inquisitive Minds is a remote education app which is oriented for teachers and students by using an online platform.
+<b>Overview/Crux: </b>Inquisitive Minds is a remote education app which is oriented for teachers and students by using an online platform.
 Teacher can add quiz questions and students can take open book based quiz where the wrong answers would be presented to the student with the correct reasoning.
 Chatbot is implemented to provide technical support and non technical assistance like giving more personalized information and assistance to the student. 
 The central idea here is to provide the students and teachers a common platform where they learn online.
