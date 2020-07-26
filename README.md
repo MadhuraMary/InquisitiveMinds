@@ -58,19 +58,20 @@ b  Navigate to http://localhost:4200/. The app will automatically reload if you 
 c. Also Run node server.js to have database server connection simultaneously in other window.
 
 Once the application has run the sample login credentials are provided below for logging in and using the application:
- Teacher login to enter the questions:
- Login Email: def@def.com
- Password: abc1234
+<br>
+ Teacher login to enter the questions:<br>
+ Login Email: def@def.com<br>
+ Password: abc1234<br>
  
- Student login to answer the questions:
-  Login Email: abc@abc.com
-  Password: abc1234
+ Student login to answer the questions:<br>
+  Login Email: abc@abc.com<br>
+  Password: abc1234<br>
 
 
 <h3>References</h3>
 Angular References:
 
-<b>Built with:<\b>
+<b>Built with<\b>
 IBM DB 2 on Cloud
 Angular
 Node JS
