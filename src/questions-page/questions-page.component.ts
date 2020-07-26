@@ -11,6 +11,7 @@ export class QuestionsPageComponent implements OnInit {
   allQuestions: any;
   userId: string = "";
   subjectId: string = "";
+  chatOpen: boolean;
   constructor(private _httpService:HttpService, private router: Router) { }
 
   ngOnInit() { 
@@ -20,6 +21,10 @@ export class QuestionsPageComponent implements OnInit {
       this.subjectId='S1';
     }
     this.getQuestions()
+  }
+
+  toggle(){
+    this.chatOpen=!this.chatOpen;
   }
 
   getQuestions(){

@@ -8,7 +8,7 @@ app = Flask(__name__)
 #Routing to Index page and ChatBot
 @app.route("/")
 def index():    
-    return render_template("edubot.html") 
+    return render_template("imbot.html") 
 
 @app.route("/get",methods=['GET'])
 def chatty():    

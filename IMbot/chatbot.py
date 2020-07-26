@@ -4,12 +4,12 @@ from chatterbot.trainers import ListTrainer
 import nltk
 
 #Train the chatbot 
-edubot = ChatBot(name="Edubot",storage_adapter="chatterbot.storage.SQLStorageAdapter",logic_adapters=['chatterbot.logic.BestMatch'])
-trainer = ListTrainer(edubot)
-trainer.train(["Hello","Greetings from Edubot","How are you","I am good ! Thanks","Facing issue","Please explain your issue"])
+imbot = ChatBot(name="IMbot",storage_adapter="chatterbot.storage.SQLStorageAdapter",logic_adapters=['chatterbot.logic.BestMatch'])
+trainer = ListTrainer(imbot)
+trainer.train(["Hello","Greetings from IM'bot","How are you","I am good ! Thanks","Facing issue","Please explain your issue"])
 trainer.train(["Hi","Hi there","Need help","Please explain your issue"])
-trainer.train(["Hi there","Greetings from Edubot","How are you","I am good ! Thanks","I am facing problems with my account","Please explain your issue"])
-trainer.train(["Hey","Greetings from Edubot","How are you","I am good ! Thanks"])
+trainer.train(["Hi there","Greetings from IM'bot","How are you","I am good ! Thanks","I am facing problems with my account","Please explain your issue"])
+trainer.train(["Hey","Greetings from IM'bot","How are you","I am good ! Thanks"])
 trainer.train(["Need more information","Sure! Please enter your subject in one word","Lion","Lions are the only cats that live in groups.Lions scent mark their territory, using their wee, to create a border.", "Tiger","The tiger is the biggest species of the cat family. Tigers can reach a length of up to 3.3 metres (11 feet) and weigh as much as 300 kilograms (660 pounds)."])
 trainer.train(["Bye","Bye ! Happy to assist"])
 trainer.train(["Thanks","No bother"])
@@ -25,4 +25,4 @@ trainer.train(["Need to talk to Quiz educator","Sure,Let me see who can get in t
 
 #Call the funtion
 def chatbot_response(text):
-    return edubot.get_response(text)
+    return imbot.get_response(text)
