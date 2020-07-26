@@ -59,11 +59,11 @@ c. Also Run node server.js to have database server connection simultaneously in 
 
 Once the application has run the sample login credentials are provided below for logging in and using the application:
 <br>
- Teacher login to enter the questions:<br>
+<b>Teacher login to enter the questions:</b><br>
  Login Email: def@def.com<br>
  Password: abc1234<br>
  
- Student login to answer the questions:<br>
+ <b>Student login to answer the questions:</b><br>
   Login Email: abc@abc.com<br>
   Password: abc1234<br>
 
@@ -71,11 +71,11 @@ Once the application has run the sample login credentials are provided below for
 <h3>References</h3>
 Angular References:
 
-<b>Built with<\b>
-IBM DB 2 on Cloud
-Angular
-Node JS
-React JS
-Python Flask
+<b>Built with</b>
+IBM DB 2 on Cloud<br>
+Angular<br><br>
+Node JS<br>
+React JS<br>
+Python Flask<br>
 
 
