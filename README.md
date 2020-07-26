@@ -40,7 +40,7 @@ c. No we need to activate the virtual environment by running below command:
 venv\Scripts\activate
 
 d. This activates our virtual python environment and should show something like
-(venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\IMbot-master
+(venv)DriveName\IMbot-master
 
 e. Above steps are generic for any Flask application. So, we come to a step where we need to run our app. Using below commands we import all the dependencies/requirements for InquisitiveBot in (venv)DriveName\IMbot-master path
 
