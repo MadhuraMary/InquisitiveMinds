@@ -18,7 +18,6 @@ Inquisitive Minds app is based on a concept called Open-Book Examination. Here, 
 Imagine,when we are in an online classroom of more than 100 participants, and there might be instances when we face issues with either network or connectivity Or would hesitate to ask a question. This is one of the reasons why we are encorporating a chabot into the app so as to give a personalised response to the user either tech or non-tech.
 
 <h3>Project Roadmap</h3>
-<a href="https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png"></a>
 
 
 <h3>Demo video</h3>
@@ -60,11 +59,11 @@ c. Also Run node server.js to have database server connection simultaneously in 
 
 Once the application has run the sample login credentials are provided below for logging in and using the application:
 <br>
- Teacher login to enter the questions:<br>
+<b>Teacher login to enter the questions:</b><br>
  Login Email: def@def.com<br>
  Password: abc1234<br>
  
- Student login to answer the questions:<br>
+ <b>Student login to answer the questions:</b><br>
   Login Email: abc@abc.com<br>
   Password: abc1234<br>
 
@@ -72,11 +71,11 @@ Once the application has run the sample login credentials are provided below for
 <h3>References</h3>
 Angular References:
 
-<b>Built with<\b>
-IBM DB 2 on Cloud
-Angular
-Node JS
-React JS
-Python Flask
+<b>Built with</b><br>
+IBM DB 2 on Cloud<br>
+Angular<br><br>
+Node JS<br>
+React JS<br>
+Python Flask<br>
 
 
