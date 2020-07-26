@@ -18,6 +18,7 @@ Inquisitive Minds app is based on a concept called Open-Book Examination. Here, 
 Imagine,when we are in an online classroom of more than 100 participants, and there might be instances when we face issues with either network or connectivity Or would hesitate to ask a question. This is one of the reasons why we are encorporating a chabot into the app so as to give a personalised response to the user either tech or non-tech.
 
 <h3>Project Roadmap</h3>
+<a href="https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png"></a>
 
 
 <h3>Demo video</h3>
