@@ -46,7 +46,7 @@ pip install -r requirements.txt
    
 f. Above steps would import the libraries/packages used. Upon successful import, you must see the same message in the powershell/cmd window. If not resolve all dependencies acc to ones installtion of Python version.
 
-Run app.py using below cmd in (venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Edubot-master path.
+Run app.py using below cmd in (venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Imbot-master path.
 python app.py
 
 h. Once ran, this would run our localhost and the app would be displayed.
@@ -61,5 +61,8 @@ c. Also Run node server.js to have database server connection simultaneously in 
 
 <h3>References</h3>
 Angular References:
+
+Flask References:
+
 
 
