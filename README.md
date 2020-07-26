@@ -18,7 +18,7 @@ Inquisitive Minds app is based on a concept called Open-Book Examination. Here, 
 Imagine,when we are in an online classroom of more than 100 participants, and there might be instances when we face issues with either network or connectivity Or would hesitate to ask a question. This is one of the reasons why we are encorporating a chabot into the app so as to give a personalised response to the user either tech or non-tech.
 
 <h3>Project Roadmap</h3>
-<a href="https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png"></a>
+![Alt text](https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png "IM")
 
 
 <h3>Demo video</h3>
@@ -27,33 +27,35 @@ Imagine,when we are in an online classroom of more than 100 participants, and th
 
 <h3>Getting started/Running the project</h3>
 
-<u>Steps to run the Flask application:</u>
-1. One must create a virtual environment in the base Chatbot folder as below:
+<b>Steps to run the Flask application:</b>
 
-a. Go to --> cd DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Imbot-master
+<b>--Note--Please make sure that you have python installed on your pc. Having two versions installed would create conflicts. Below project best runs with 3.7.2 Python version.</b>
+
+1. One must create a virtual environment in the base Chatbot folder as below:
+a. Go to --> cd DriveName\IMbot-master
 b. once in above path: Create a virtual environment by writing command: py -3 -m venv venv
-Once ran, you should see a venv folder under the 'Imbot-master' folder
+Once ran, you should see a venv folder under the 'IMbot-master' folder
 
 c. No we need to activate the virtual environment by running below command:
 venv\Scripts\activate
 
 d. This activates our virtual python environment and should show something like
-(venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Imbot-master
+(venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\IMbot-master
 
-e. Above steps are generic for any Flask application. So, we come to a step where we need to run our app. Using below commands we import all the dependencies/requirements for InquisitiveBot in (venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Imbot-master path
+e. Above steps are generic for any Flask application. So, we come to a step where we need to run our app. Using below commands we import all the dependencies/requirements for InquisitiveBot in (venv)DriveName\IMbot-master path
 
 pip install -r requirements.txt
 
    
 f. Above steps would import the libraries/packages used. Upon successful import, you must see the same message in the powershell/cmd window. If not resolve all dependencies acc to ones installtion of Python version.
 
-Run app.py using below cmd in (venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Edubot-master path.
+Run app.py using below cmd in (venv)DriveName\Edubot-master path.
 python app.py
 
 h. Once ran, this would run our localhost and the app would be displayed.
 
 
-<u>Steps to run the Angular application:</u>
+<b>Steps to run the Angular application:</b>
 a. Run ng serve for a dev server.
 b  Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 c. Also Run node server.js to have database server connection simultaneously in other window.
