@@ -46,7 +46,7 @@ pip install -r requirements.txt
    
 f. Above steps would import the libraries/packages used. Upon successful import, you must see the same message in the powershell/cmd window. If not resolve all dependencies acc to ones installtion of Python version.
 
-Run app.py using below cmd in (venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Imbot-master path.
+Run app.py using below cmd in (venv)DriveName\InquisitiveMinds-master\InquisitiveMinds-master\Edubot-master path.
 python app.py
 
 h. Once ran, this would run our localhost and the app would be displayed.
@@ -57,12 +57,24 @@ a. Run ng serve for a dev server.
 b  Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 c. Also Run node server.js to have database server connection simultaneously in other window.
 
+Once the application has run the sample login credentials are provided below for logging in and using the application:
+ Teacher login to enter the questions:
+ Login Email: def@def.com
+ Password: abc1234
+ 
+ Student login to answer the questions:
+  Login Email: abc@abc.com
+  Password: abc1234
 
 
 <h3>References</h3>
 Angular References:
 
-Flask References:
-
+<b>Built with:<\b>
+IBM DB 2 on Cloud
+Angular
+Node JS
+React JS
+Python Flask
 
 
