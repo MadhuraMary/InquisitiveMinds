@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport",content="width=device-width,initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      #messageScreen {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 66px;
+      }
+      #entry {
+        margin-top: 65px;
+      }
+    
+      .textui span {
+        background-color: #313d4b;
+        padding: 11px;
+        border-radius: 4px;
+      }
+      .tx1 {
+        color: whitesmoke;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 18px;
+        text-align: left;
+        line-height: 31px;
+      }
+      .tx1 span {
+        background-color: #8e8e90;
+        padding: 10px;
+        border-radius: 4px;
+      }
+     
+      #textxb1 {
+        margin-bottom: 19px;
+        width: 100%;
+        height: 42px;
+        font-size: 20px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #101357;
+        color: whitesmoke;
+        border-radius: 10px;
+        
+      }
+      .textui {
+        color: whitesmoke;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 18px;
+        text-align: right;
+        line-height: 30px;
+      }
+
+      .x1 {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .navigate {
+        overflow: hidden;
+        background-color: #101357;
+        font-size: 20px;
+        border-radius: 8px;
+        height: 53px;
+        margin-top: 20px;
+        padding-top: 20px;
+      }
+      .chathead1{
+        color: whitesmoke;
+        padding-left: 18px;
+        padding-right: 108px;
+        font-size: 30px;
+      }
+      .chathead{
+        color: whitesmoke;
+        font-size: medium;
+        
+      }
+         </style>
+</head>
+<body>
+  <div class="navigate">
+    <span class="chathead1">IM'bot</span>
+    <a class="chathead" href="quiz" style="padding-left: 100px;">Quiz</a>
+    <a class="chathead" href="#technical">Support</a>
+  </div>
+  
+  <div style="overflow: auto;">
+    <div class="x1">
+      <div>
+        <div id="messageScreen">
+          <p class="tx1">
+            <span>We answer all your queries & help connect with our experts.</span>
+          </p>
+        </div>
+        <div id="entry" style="color:#101357;" >
+          <input id="textxb1" type="text" name="message" placeholder="Need Help?">
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  <script>
+    function inquisitivebotResponse() {
+      var rawText = $("#textxb1").val();
+      var rawData = '<p class="textui"><span>' + rawText + "</span></p>";
+      $("#textxb1").val("");
+      $("#messageScreen").append(rawData);
+      document
+        .getElementById("entry")
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+
+      $.get("/get", { message: rawText }).done(function(data) {
+        var botdata = '<p class="tx1"><span>' + data + "</span></p>";
+        $("#messageScreen").append(botdata);
+        document
+          .getElementById("entry")
+          .scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+    }
+
+    $("#textxb1").keypress(function(e) {
+      if (e.which == 13) {
+        inquisitivebotResponse();
+      }
+    });
+</script>
+</html>

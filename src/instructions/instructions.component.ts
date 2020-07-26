@@ -11,11 +11,16 @@ export class InstructionsComponent implements OnInit {
   isChecked :boolean;
   subjectSelected: any;
   subjectsList: any;
+  chatOpen: boolean;
   constructor(private _httpService:HttpService,private router: Router) { }
 
   ngOnInit() {
     this.getSubjectsList();
     this.isChecked=false;
+  }
+
+  toggle(){
+    this.chatOpen=!this.chatOpen;
   }
 
   onChange(name,value){

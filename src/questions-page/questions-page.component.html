@@ -72,10 +72,11 @@
 </div> -->
 <div>
     <h2>Assessment:</h2>    
-<nav>
-    <a style="text-align: right;" href="https://inquisitive-bot.herokuapp.com/" target="_blank"><h4>Chat with our eduBOT</h4></a>
-</nav>  
+    <div style="text-align: right;" class="form-group">
+        <button class="btn btn-success" (click)="toggle()">Chat with IM'bot</button>
+    </div>
     <form>
+        <iframe *ngIf="chatOpen"  src = "http://127.0.0.1:5000/"  frameborder="0" id="chatbot" scrolling="0" width = "450px" height = "500px"  style="position: fixed; border-radius: 25px;right:0px ; z-index:99999; background-color:whitesmoke;"></iframe>
         <div *ngFor="let question of allQuestions; let i = index" class="form-group">
             {{i + 1}}. <label for="question">{{question['QUESTION']}}</label> <br/>
             <input type="radio" name="{{question['QUESTION_ID']}}" value="{{question['OPTION_1']}}" /> {{question['OPTION_1']}}  <br/>
@@ -90,7 +91,5 @@
             <button class="btn" (click)="cancel()">LogOut</button>
             <div id="result"></div>
         </div>
-        
-    </form>
-    
-</div>
+         </form>
+    </div>
