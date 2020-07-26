@@ -73,7 +73,7 @@ Angular References:
 
 <b>Built with</b><br>
 IBM DB 2 on Cloud<br>
-Angular<br><br>
+Angular<br>
 Node JS<br>
 React JS<br>
 Python Flask<br>
