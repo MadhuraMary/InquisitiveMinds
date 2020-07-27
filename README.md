@@ -52,7 +52,7 @@ f. Above steps would import the libraries/packages used. Upon successful import,
 Run app.py using below cmd in (venv)DriveName\IMbot-master path <br>
 python app.py
 
-h. Once ran, this would run our localhost and the app would be displayed.
+h. Once ran, this would run our localhost and the app would be displayed if you want to see it though one can see it embedded in the Angular app.
 
 
 <b>Steps to run the Angular application:</b><br>
@@ -75,9 +75,9 @@ Once the application has run the sample login credentials are provided below for
 
 <b>Built with</b><br>
 IBM DB 2 on Cloud<br>
-Angular<br>
+Angular framework with typescript<br>
 Node JS<br>
-React JS<br>
-Python Flask<br>
+Express JS<br>
+Python with Flask framework<br>
 
 
