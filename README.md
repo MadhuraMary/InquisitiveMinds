@@ -55,7 +55,7 @@ python app.py
 h. Once ran, this would run our localhost and the app would be displayed.
 
 
-<b>Steps to run the Angular application:</b>
+<b>Steps to run the Angular application:</b><br>
 a. Run ng serve for a dev server.<br>
 b  Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.<br>
 c. Also Run node server.js to have database server connection simultaneously in other window.<br>
