@@ -19,10 +19,10 @@ Imagine,when we are in an online classroom of more than 100 participants, and th
 
 <h3>Project Roadmap</h3>
 ![IM](https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png "IM")
-
+https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png
 
 <h3>Demo video</h3>
---Left--
+https://youtu.be/9ItTy3I0oLc <br/>
 
 
 <h3>Getting started/Running the project</h3>
@@ -62,17 +62,16 @@ c. Also Run node server.js to have database server connection simultaneously in 
 
 Once the application has run the sample login credentials are provided below for logging in and using the application:
 <br>
-<b>Teacher login to enter the questions:</b><br>
- Login Email: def@def.com<br>
- Password: abc1234<br>
  
  <b>Student login to answer the questions:</b><br>
   Login Email: abc@abc.com<br>
   Password: abc1234<br>
+  
+  <b>Teacher login to enter the questions:</b><br>
+ Login Email: def@def.com<br>
+ Password: abc1234<br>
 
 
-<h3>References</h3>
-Angular References:
 
 <b>Built with</b><br>
 IBM DB 2 on Cloud<br>
