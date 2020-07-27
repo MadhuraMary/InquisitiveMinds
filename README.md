@@ -27,6 +27,7 @@ raw=true
 alt=“Inquisitive Minds Roadmap”
 style=“margin-right: 10px;”
 />
+![Inquisitive Minds Roadmap](https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png)
 
 <h3>Demo video</h3>
 https://youtu.be/9ItTy3I0oLc <br/>
