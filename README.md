@@ -56,9 +56,9 @@ h. Once ran, this would run our localhost and the app would be displayed.
 
 
 <b>Steps to run the Angular application:</b>
-a. Run ng serve for a dev server.
-b  Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-c. Also Run node server.js to have database server connection simultaneously in other window.
+a. Run ng serve for a dev server.<br>
+b  Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.<br>
+c. Also Run node server.js to have database server connection simultaneously in other window.<br>
 
 Once the application has run the sample login credentials are provided below for logging in and using the application:
 <br>
