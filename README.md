@@ -21,6 +21,13 @@ Imagine,when we are in an online classroom of more than 100 participants, and th
 <!--![IM](https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png "IM")-->
 https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png
 
+<img
+src=“https://github.com/MadhuraMary/InquisitiveMinds/blob/master/RoadMap-IM.png”
+raw=true
+alt=“Inquisitive Minds Roadmap”
+style=“margin-right: 10px;”
+/>
+
 <h3>Demo video</h3>
 https://youtu.be/9ItTy3I0oLc <br/>
 
