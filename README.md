@@ -36,7 +36,7 @@ a. Go to --> cd DriveName\IMbot-master
 b. once in above path: Create a virtual environment by writing command: py -3 -m venv venv
 Once ran, you should see a venv folder under the 'IMbot-master' folder
 
-c. No we need to activate the virtual environment by running below command:
+c. Now we need to activate the virtual environment by running below command:
 venv\Scripts\activate
 
 d. This activates our virtual python environment and should show something like
